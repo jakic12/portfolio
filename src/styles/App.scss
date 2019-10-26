@@ -1,0 +1,20 @@
+@import "./color_palette.scss";
+
+.app {
+  color: $foreground-color;
+  background: $background-color;
+  width: 100vw;
+  height: 100vh;
+
+  .topBar {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 4;
+
+    .menu {
+      float: right;
+      margin-right: 50px;
+    }
+  }
+}

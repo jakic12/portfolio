@@ -1,0 +1,35 @@
+@import "../color_palette.scss";
+
+.mainPage {
+  .topTitle {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 3;
+
+    .middleCard {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .title {
+        h1 {
+          font-family: "Black Ops One", cursive;
+          font-weight: normal !important;
+          font-size: 10em;
+        }
+        h1 {
+          margin: 2px;
+          color: $primary-color;
+          text-shadow: 1px 1px 0 black, 2px 2px 0 black, 3px 3px 0 black,
+            4px 4px 0 black, 5px 5px 0 $secondary-color,
+            6px 6px 0 $secondary-color, 7px 7px 0 $secondary-color,
+            8px 8px 0 $secondary-color, 9px 9px 0 $secondary-color,
+            10px 10px 0 $secondary-color, 11px 11px 0 $secondary-color;
+          line-height: 9rem;
+        }
+      }
+    }
+  }
+}
