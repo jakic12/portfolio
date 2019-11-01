@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/screens/Main.scss";
 
 // components
-import AnimatedBackgrounds from "../components/AnimatedBackground";
+import AnimatedBackground from "../components/AnimatedBackground";
 
 const Main = () => {
   return (
@@ -13,7 +13,7 @@ const Main = () => {
             <h1>Jakob Drusany</h1>
           </div>
         </div>
-        <AnimatedBackgrounds />
+        <AnimatedBackground />
       </div>
       <div className="projectList"></div>
     </div>
