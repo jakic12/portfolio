@@ -9,9 +9,7 @@ const Main = () => {
     <div className="mainPage">
       <div className="topTitle">
         <div className="middleCard">
-          <div className="title">
-            <h1>Jakob Drusany</h1>
-          </div>
+          <div className="title">{/*<h1>Jakob Drusany</h1>*/}</div>
         </div>
         <AnimatedBackground />
       </div>

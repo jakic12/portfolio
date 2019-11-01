@@ -8,10 +8,10 @@ Number.prototype.clamp = function(min, max) {
 class AnimatedBackground extends Component {
   DEBUG_MODE = true;
   MAX_POINTS = 200;
-  VECT_FIELD_X = (x, y, z) => 0.0001 + 0.2;
+  VECT_FIELD_X = (x, y, z) => 0.0001 + 0;
   VECT_FIELD_Y = (x, y, z) =>
-    0.0001 + /*Math.sin(z) + */ (x - this.mouseX) * 0.001;
-  VECT_FIELD_Z = (x, y, z) => 0.0001 /*- Math.cos(y)*/;
+    0.0001 + Math.cos(-z / 50 + (this.mouseX / window.innerWidth) * 10);
+  VECT_FIELD_Z = (x, y, z) => 0.0001 - 0.2;
   CAMERA_DISTANCE = 100;
   CAMERA_SPEED = this.DEBUG_MODE ? 0.9 : 0.1;
 
@@ -59,7 +59,7 @@ class AnimatedBackground extends Component {
     this.scene.add(this.line);
 
     if (this.DEBUG_MODE)
-      this.vectorField = drawVectorField(
+      this.vectorField = new drawVectorField(
         this.scene,
         this.VECT_FIELD_X,
         this.VECT_FIELD_Y,
@@ -99,12 +99,10 @@ class AnimatedBackground extends Component {
 
   animate = () => {
     if (this.DEBUG_MODE)
-      updateVectorField(
-        this.vectorField.arrows,
+      this.vectorField.update(
         this.VECT_FIELD_X,
         this.VECT_FIELD_Y,
-        this.VECT_FIELD_Z,
-        this.vectorField.vectorSizeFactor
+        this.VECT_FIELD_Z
       );
 
     if (this.mouseX && this.mouseY) {
@@ -279,94 +277,124 @@ class ParticleList {
   }
 }
 
-const drawVectorField = (
-  scene,
-  xFunct = () => 0,
-  yFunct = () => 0,
-  zFunct = () => 0,
-  sizeX,
-  sizeY = sizeX,
-  sizeZ = sizeX,
-  spacing = 10,
-  vectorSizeFactor = 10,
-  color = 0x333333
-) => {
-  let arrows = [];
-  let lengths = [];
-  let maxLen = -1;
-  let minLen = -1;
-  for (let x = -sizeX / 2; x < sizeX / 2; x += spacing) {
-    for (let y = -sizeY / 2; y < sizeY / 2; y += spacing) {
-      for (let z = -sizeZ / 2; z < sizeZ / 2; z += spacing) {
-        const vector = new THREE.Vector3(
-          xFunct(x, y, z),
-          yFunct(x, y, z),
-          zFunct(x, y, z)
-        );
-        const origin = new THREE.Vector3(x, y, z);
-        const length = vectorSizeFactor * vector.length();
-        let vecColor;
-        if (color instanceof Gradient) {
-          if (isFinite(length)) {
-            if (length > maxLen) {
-              maxLen = length;
+class drawVectorField {
+  constructor(
+    scene,
+    xFunct = () => 0,
+    yFunct = () => 0,
+    zFunct = () => 0,
+    sizeX,
+    sizeY = sizeX,
+    sizeZ = sizeX,
+    spacing = 10,
+    vectorSizeFactor = 10,
+    color = 0x333333
+  ) {
+    this.arrows = [];
+    this.lengths = [];
+    this.maxLen = -1;
+    this.minLen = -1;
+
+    this.xFunct = xFunct;
+    this.yFunct = yFunct;
+    this.zFunct = zFunct;
+    this.vectorSizeFactor = vectorSizeFactor;
+    this.color = color;
+
+    for (let x = -sizeX / 2; x < sizeX / 2; x += spacing) {
+      for (let y = -sizeY / 2; y < sizeY / 2; y += spacing) {
+        for (let z = -sizeZ / 2; z < sizeZ / 2; z += spacing) {
+          const vector = new THREE.Vector3(
+            xFunct(x, y, z),
+            yFunct(x, y, z),
+            zFunct(x, y, z)
+          );
+          const origin = new THREE.Vector3(x, y, z);
+          const length = vectorSizeFactor * vector.length();
+          let vecColor;
+          if (color instanceof Gradient) {
+            if (isFinite(length)) {
+              if (length > this.maxLen) {
+                this.maxLen = length;
+              }
+
+              if (length < this.minLen) {
+                this.minLen = length;
+              }
+
+              if (this.maxLen == -1) {
+                this.maxLen = length;
+              }
+
+              if (this.minLen == -1) {
+                this.minLen = length;
+              }
             }
 
-            if (length < minLen) {
-              minLen = length;
-            }
-
-            if (maxLen == -1) {
-              maxLen = length;
-            }
-
-            if (minLen == -1) {
-              minLen = length;
-            }
+            this.lengths.push(length);
+          } else {
+            vecColor = color;
           }
-
-          lengths.push(length);
-        } else {
-          vecColor = color;
+          const arrow = new THREE.ArrowHelper(vector, origin, length, vecColor);
+          this.arrows.push(arrow);
+          scene.add(arrow);
         }
-        const arrow = new THREE.ArrowHelper(vector, origin, length, vecColor);
-        arrows.push(arrow);
-        scene.add(arrow);
       }
     }
+    if (color instanceof Gradient) {
+      this.arrows.forEach((arrow, i) => {
+        let normalized =
+          (this.lengths[i] - this.minLen) / (this.maxLen - this.minLen);
+        if (!normalized || !isFinite(normalized)) {
+          normalized = 1;
+        }
+        arrow.setColor(color.getColor(normalized));
+      });
+    }
   }
-  if (color instanceof Gradient) {
-    arrows.forEach((arrow, i) => {
-      let normalized = (lengths[i] - minLen) / (maxLen - minLen);
-      if (!normalized || !isFinite(normalized)) {
-        normalized = 1;
-      }
-      arrow.setColor(color.getColor(normalized));
-    });
-  }
-  return {
-    vectorSizeFactor,
-    arrows
-  };
-};
 
-const updateVectorField = (
-  arrows,
-  xFunct = () => 0,
-  yFunct = () => 0,
-  zFunct = () => 0,
-  vectorSizeFactor = 10
-) => {
-  arrows.forEach(arrow => {
-    const newVector = new THREE.Vector3(
-      xFunct(arrow.position.x, arrow.position.y, arrow.position.z),
-      yFunct(arrow.position.x, arrow.position.y, arrow.position.z),
-      zFunct(arrow.position.x, arrow.position.y, arrow.position.z)
-    );
-    arrow.setLength(newVector.length() * vectorSizeFactor);
-    arrow.setDirection(newVector);
-  });
-};
+  update(xFunct = this.xFunct, yFunct = this.yFunct, zFunct = this.zFunct) {
+    this.arrows.forEach((arrow, i) => {
+      const newVector = new THREE.Vector3(
+        xFunct(arrow.position.x, arrow.position.y, arrow.position.z),
+        yFunct(arrow.position.x, arrow.position.y, arrow.position.z),
+        zFunct(arrow.position.x, arrow.position.y, arrow.position.z)
+      );
+      this.lengths[i] = newVector.length() * this.vectorSizeFactor;
+      if (this.color instanceof Gradient) {
+        if (isFinite(this.lengths[i])) {
+          if (this.lengths[i] > this.maxLen) {
+            this.maxLen = this.lengths[i];
+          }
+
+          if (this.lengths[i] < this.minLen) {
+            this.minLen = this.lengths[i];
+          }
+
+          if (this.maxLen == -1) {
+            this.maxLen = this.lengths[i];
+          }
+
+          if (this.minLen == -1) {
+            this.minLen = this.lengths[i];
+          }
+        }
+      }
+      arrow.setLength(this.lengths[i]);
+      arrow.setDirection(newVector);
+    });
+    if (this.color instanceof Gradient) {
+      this.arrows.forEach((arrow, i) => {
+        let normalized =
+          (this.lengths[i] - this.minLen) / (this.maxLen - this.minLen);
+        if (!normalized || !isFinite(normalized)) {
+          normalized = 1;
+        }
+        arrow.setColor(this.color.getColor(normalized));
+      });
+    }
+  }
+}
 
 const drawCoordinateSystem = (scene, size) => {
   scene.add(
