@@ -2,16 +2,18 @@ import React from "react";
 import "../styles/screens/Main.scss";
 
 // components
-import AnimatedBackground from "../components/AnimatedBackground";
+import VectorFieldAnimatedBackground from "../components/VectorFieldAnimatedBackground";
 
 const Main = () => {
   return (
     <div className="mainPage">
       <div className="topTitle">
         <div className="middleCard">
-          <div className="title">{/*<h1>Jakob Drusany</h1>*/}</div>
+          <div className="title">
+            <h1>Jakob Drusany</h1>
+          </div>
         </div>
-        <AnimatedBackground />
+        <VectorFieldAnimatedBackground />
       </div>
       <div className="projectList"></div>
     </div>

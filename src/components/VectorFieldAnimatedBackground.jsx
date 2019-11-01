@@ -5,13 +5,14 @@ import * as THREE from "three";
 Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
 };
-class AnimatedBackground extends Component {
-  DEBUG_MODE = true;
-  MAX_POINTS = 200;
+class VectorFieldAnimatedBackground extends Component {
+  DEBUG_MODE = false;
+  MAX_POINTS = 2000;
   VECT_FIELD_X = (x, y, z) => 0.0001 + 0;
   VECT_FIELD_Y = (x, y, z) =>
-    0.0001 + Math.cos(-z / 50 + (this.mouseX / window.innerWidth) * 10);
-  VECT_FIELD_Z = (x, y, z) => 0.0001 - 0.2;
+    0.0001 + Math.sin(z / 20 + (this.mouseX / window.innerWidth) * 10);
+  VECT_FIELD_Z = (x, y, z) =>
+    0.0001 + Math.sin(y / 20 + (this.mouseY / window.innerHeight) * 10);
   CAMERA_DISTANCE = 100;
   CAMERA_SPEED = this.DEBUG_MODE ? 0.9 : 0.1;
 
@@ -64,7 +65,7 @@ class AnimatedBackground extends Component {
         this.VECT_FIELD_X,
         this.VECT_FIELD_Y,
         this.VECT_FIELD_Z,
-        this.CAMERA_DISTANCE,
+        1,
         this.CAMERA_DISTANCE,
         this.CAMERA_DISTANCE * 2,
         undefined,
@@ -462,4 +463,4 @@ class Gradient {
   }
 }
 
-export default AnimatedBackground;
+export default VectorFieldAnimatedBackground;
