@@ -17,6 +17,10 @@ class VectorFieldAnimatedBackground extends Component {
   CAMERA_SPEED = this.DEBUG_MODE ? 0.9 : 0.1;
 
   componentDidMount() {
+    this.state = {
+      mouseInside: true
+    };
+
     this.point_color_gradient = new Gradient(0x0aeff0, 0xff1a59);
     this.mouseX = window.innerWidth / 2;
     this.mouseY = window.innerHeight / 2;
@@ -167,8 +171,10 @@ class VectorFieldAnimatedBackground extends Component {
   };
 
   handleMouseMove = event => {
-    this.mouseX = event.clientX;
-    this.mouseY = event.clientY;
+    if (this.state.mouseInside) {
+      this.mouseX = event.clientX;
+      this.mouseY = event.clientY;
+    }
   };
 
   renderScene = () => {
@@ -196,6 +202,8 @@ class VectorFieldAnimatedBackground extends Component {
         ref={mount => {
           this.mount = mount;
         }}
+        onMouseOver={() => this.setState({ mouseInside: true })}
+        onMouseOut={() => this.setState({ mouseInside: false })}
       />
     );
   }
