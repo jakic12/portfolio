@@ -45,8 +45,8 @@
   }
 
   .projectList {
+    box-sizing: border-box;
     background: $background-color;
-    height: 1000px;
     position: relative;
     padding-top: 4rem;
 
@@ -67,6 +67,10 @@
         $background-color 0px,
         $background-color 100px
       );
+    }
+
+    .projectListInner {
+      padding: 2rem;
     }
   }
 }

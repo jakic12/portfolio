@@ -17,7 +17,9 @@ const Main = () => {
         <VectorFieldAnimatedBackground />
       </div>
       <div className="projectList">
-        <ProjectList />
+        <div className="projectListInner">
+          <ProjectList />
+        </div>
       </div>
     </div>
   );

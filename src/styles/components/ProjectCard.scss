@@ -1,19 +1,80 @@
-.projectCard {
-  .cardHeader {
-    .icon {
-    }
+@import "../color_palette.scss";
 
-    .cardTitle {
-      .title {
+.projectCardWrapper {
+  width: 720px;
+  height: 220px;
+  position: relative;
+
+  &::before {
+    display: block;
+    position: absolute;
+
+    right: 0;
+    top: 11px;
+    transform: skewY(45deg);
+
+    content: "";
+    background: $secondary-color;
+    width: 20px;
+    height: 200px;
+  }
+
+  &::after {
+    display: block;
+    position: absolute;
+
+    bottom: 0;
+    left: 9px;
+    transform: skewX(45deg);
+
+    content: "";
+    background: $secondary-color;
+    width: 700px;
+    height: 20px;
+  }
+
+  .projectCard {
+    width: 700px;
+    height: 200px;
+    background: $background-darker;
+
+    .cardHeader {
+      display: flex;
+      .icon {
+        img {
+          height: 200px;
+          width: 200px;
+          object-fit: cover;
+        }
       }
-      .subtitle {
+
+      .cardTitle {
+        flex-grow: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title {
+          margin: 0;
+        }
+        .subtitle {
+          margin: 0;
+        }
+        .techs {
+          overflow-x: auto;
+          overflow-y: hidden;
+          width: 400px;
+          height: 50px;
+          white-space: nowrap;
+        }
       }
-      .techs {
+    }
+    .cardBody {
+      .cardBodyInner {
       }
     }
   }
-  .cardBody {
-    .cardBodyInner {
-    }
+  &:not(:first-child) {
+    margin-top: 2rem;
   }
 }
