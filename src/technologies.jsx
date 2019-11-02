@@ -1,5 +1,8 @@
 import React from "react";
 
+import DevIcon, { iconList } from "devicon-react-svg";
+console.log(iconList);
+/*
 import Amazonwebservices from "react-devicon/amazonwebservices/original";
 import Android from "react-devicon/android/original";
 import Angularjs from "react-devicon/angularjs/original";
@@ -118,590 +121,345 @@ import Wordpress from "react-devicon/wordpress/original";
 import Yarn from "react-devicon/yarn/original";
 import Yii from "react-devicon/yii/original";
 import Zend from "react-devicon/zend/plain";
-
+*/
 export default {
-  amazonwebservices: {
-    icon: props => <Amazonwebservices {...props} />,
-    label: "Amazonwebservices",
-    link: "https://aws.amazon.com/"
-  },
   android: {
-    icon: props => <Android {...props} />,
+    icon: props => <DevIcon {...props} icon="android" />,
     label: "Android",
     link: "https://www.android.com/"
   },
-  angularjs: {
-    icon: props => <Angularjs {...props} />,
-    label: "Angularjs",
-    link: "https://angularjs.org/"
-  },
-  apache: {
-    icon: props => <Apache {...props} />,
-    label: "Apache",
-    link: "https://httpd.apache.org/"
-  },
   appcelerator: {
-    icon: props => <Appcelerator {...props} />,
+    icon: props => <DevIcon {...props} icon="appcelerator" />,
     label: "Appcelerator",
     link: "https://www.appcelerator.com/"
   },
   apple: {
-    icon: props => <Apple {...props} />,
+    icon: props => <DevIcon {...props} icon="apple" />,
     label: "Apple",
     link: "https://www.apple.com/"
   },
   atom: {
-    icon: props => <Atom {...props} />,
+    icon: props => <DevIcon {...props} icon="atom" />,
     label: "Atom",
     link: "https://atom.io/"
   },
-  babel: {
-    icon: props => <Babel {...props} />,
-    label: "Babel",
-    link: "https://babeljs.io/"
-  },
-  backbonejs: {
-    icon: props => <Backbonejs {...props} />,
-    label: "Backbonejs",
-    link: "https://backbonejs.org/"
-  },
-  behance: {
-    icon: props => <Behance {...props} />,
-    label: "Behance",
-    link: "https://www.behance.net/"
-  },
   bitbucket: {
-    icon: props => <Bitbucket {...props} />,
+    icon: props => <DevIcon {...props} icon="bitbucket" />,
     label: "Bitbucket",
     link: "https://bitbucket.org/"
   },
   bootstrap: {
-    icon: props => <Bootstrap {...props} />,
+    icon: props => <DevIcon {...props} icon="bootstrap" />,
     label: "Bootstrap",
     link: "https://getbootstrap.com/"
   },
   bower: {
-    icon: props => <Bower {...props} />,
+    icon: props => <DevIcon {...props} icon="bower" />,
     label: "Bower",
     link: "https://bower.io/"
   },
-  c: {
-    icon: props => <C {...props} />,
-    label: "C",
-    link: "https://en.cppreference.com/w/"
-  },
-  cakephp: {
-    icon: props => <Cakephp {...props} />,
-    label: "Cakephp",
-    link: "https://cakephp.org/"
-  },
-  ceylon: {
-    icon: props => <Ceylon {...props} />,
-    label: "Ceylon",
-    link: "https://ceylon-lang.org/"
-  },
   chrome: {
-    icon: props => <Chrome {...props} />,
+    icon: props => <DevIcon {...props} icon="chrome" />,
     label: "Chrome",
     link: "https://www.google.com/intl/sl_SI/chrome/"
   },
   codeigniter: {
-    icon: props => <Codeigniter {...props} />,
+    icon: props => <DevIcon {...props} icon="codeigniter" />,
     label: "Codeigniter",
     link: "https://codeigniter.com/"
   },
   coffeescript: {
-    icon: props => <Coffeescript {...props} />,
+    icon: props => <DevIcon {...props} icon="coffeescript" />,
     label: "Coffeescript",
     link: "https://coffeescript.org/"
   },
-  confluence: {
-    icon: props => <Confluence {...props} />,
-    label: "Confluence",
-    link: "https://www.atlassian.com/software/confluence"
-  },
-  couchdb: {
-    icon: props => <Couchdb {...props} />,
-    label: "Couchdb",
-    link: "http://couchdb.apache.org/"
-  },
-  cplusplus: {
-    icon: props => <Cplusplus {...props} />,
-    label: "Cplusplus",
-    link: "http://www.cplusplus.com/"
-  },
-  csharp: {
-    icon: props => <Csharp {...props} />,
-    label: "Csharp",
-    link: "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"
-  },
   css3: {
-    icon: props => <Css3 {...props} />,
+    icon: props => <DevIcon {...props} icon="css3" />,
     label: "Css3",
     link: "http://www.css3.info/"
   },
-  cucumber: {
-    icon: props => <Cucumber {...props} />,
-    label: "Cucumber",
-    link: "https://cucumber.io/"
-  },
-  d3js: {
-    icon: props => <D3js {...props} />,
-    label: "D3js",
-    link: "https://d3js.org/"
-  },
   debian: {
-    icon: props => <Debian {...props} />,
+    icon: props => <DevIcon {...props} icon="debian" />,
     label: "Debian",
     link: "https://www.debian.org/"
   },
-  devicon: {
-    icon: props => <Devicon {...props} />,
-    label: "Devicon",
-    link: "https://konpa.github.io/devicon/"
-  },
   django: {
-    icon: props => <Django {...props} />,
+    icon: props => <DevIcon {...props} icon="django" />,
     label: "Django",
     link: "https://www.djangoproject.com/"
   },
   docker: {
-    icon: props => <Docker {...props} />,
+    icon: props => <DevIcon {...props} icon="docker" />,
     label: "Docker",
     link: "https://www.docker.com/"
   },
   doctrine: {
-    icon: props => <Doctrine {...props} />,
+    icon: props => <DevIcon {...props} icon="doctrine" />,
     label: "Doctrine",
     link: "https://www.doctrine-project.org/"
   },
   dotnet: {
-    icon: props => <DotNet {...props} />,
+    icon: props => <DevIcon {...props} icon="dotnet" />,
     label: "DotNet",
     link: "https://dotnet.microsoft.com/"
   },
   drupal: {
-    icon: props => <Drupal {...props} />,
+    icon: props => <DevIcon {...props} icon="drupal" />,
     label: "Drupal",
     link: "https://www.drupal.org/"
   },
-  electron: {
-    icon: props => <Electron {...props} />,
-    label: "Electron",
-    link: "https://electronjs.org/"
-  },
-  elm: {
-    icon: props => <Elm {...props} />,
-    label: "Elm",
-    link: "https://elm-lang.org/"
-  },
   ember: {
-    icon: props => <Ember {...props} />,
+    icon: props => <DevIcon {...props} icon="ember" />,
     label: "Ember",
     link: "https://emberjs.com/"
   },
   erlang: {
-    icon: props => <Erlang {...props} />,
+    icon: props => <DevIcon {...props} icon="erlang" />,
     label: "Erlang",
     link: "https://www.erlang.org/"
   },
-  express: {
-    icon: props => <Express {...props} />,
-    label: "Express",
-    link: "https://expressjs.com/"
-  },
   firefox: {
-    icon: props => <Firefox {...props} />,
+    icon: props => <DevIcon {...props} icon="firefox" />,
     label: "Firefox",
     link: "https://www.mozilla.org/sl/firefox/new/"
   },
-  foundation: {
-    icon: props => <Foundation {...props} />,
-    label: "Foundation",
-    link: "https://foundation.zurb.com/"
-  },
-  gatling: {
-    icon: props => <Gatling {...props} />,
-    label: "Gatling",
-    link: "https://gatling.io/"
-  },
-  gimp: {
-    icon: props => <Gimp {...props} />,
-    label: "Gimp",
-    link: "https://www.gimp.org/"
-  },
   git: {
-    icon: props => <Git {...props} />,
+    icon: props => <DevIcon {...props} icon="git" />,
     label: "Git",
     link: "https://git-scm.com/"
   },
   github: {
-    icon: props => <Github {...props} />,
+    icon: props => <DevIcon {...props} icon="github" />,
     label: "Github",
     link: "https://github.com/"
   },
-  gitlab: {
-    icon: props => <Gitlab {...props} />,
-    label: "Gitlab",
-    link: "https://gitlab.com/"
-  },
   go: {
-    icon: props => <Go {...props} />,
+    icon: props => <DevIcon {...props} icon="go" />,
     label: "Go",
     link: "https://golang.org/"
   },
-  google: {
-    icon: props => <Google {...props} />,
-    label: "Google",
-    link: "https://www.google.si/"
-  },
-  gradle: {
-    icon: props => <Gradle {...props} />,
-    label: "Gradle",
-    link: "https://gradle.org/"
-  },
   grunt: {
-    icon: props => <Grunt {...props} />,
+    icon: props => <DevIcon {...props} icon="grunt" />,
     label: "Grunt",
     link: "https://gruntjs.com/"
   },
   gulp: {
-    icon: props => <Gulp {...props} />,
+    icon: props => <DevIcon {...props} icon="gulp" />,
     label: "Gulp",
     link: "https://gulpjs.com/"
   },
-  handlebars: {
-    icon: props => <Handlebars {...props} />,
-    label: "Handlebars",
-    link: "https://handlebarsjs.com/"
-  },
   heroku: {
-    icon: props => <Heroku {...props} />,
+    icon: props => <DevIcon {...props} icon="heroku" />,
     label: "Heroku",
     link: "https://www.heroku.com/"
   },
   html5: {
-    icon: props => <Html5 {...props} />,
+    icon: props => <DevIcon {...props} icon="html5" />,
     label: "Html5",
     link: "https://en.wikipedia.org/wiki/HTML5"
   },
   illustrator: {
-    icon: props => <Illustrator {...props} />,
+    icon: props => <DevIcon {...props} icon="illustrator" />,
     label: "Illustrator",
     link: "https://www.adobe.com/si/products/illustrator.html"
   },
-  inkscape: {
-    icon: props => <Inkscape {...props} />,
-    label: "Inkscape",
-    link: "https://inkscape.org/"
-  },
   intellij: {
-    icon: props => <Intellij {...props} />,
+    icon: props => <DevIcon {...props} icon="intellij" />,
     label: "Intellij",
     link: "https://www.jetbrains.com/idea/"
   },
   ionic: {
-    icon: props => <Ionic {...props} />,
+    icon: props => <DevIcon {...props} icon="ionic" />,
     label: "Ionic",
     link: "https://ionicframework.com/"
   },
-  jasmine: {
-    icon: props => <Jasmine {...props} />,
-    label: "Jasmine",
-    link: "https://jasmine.github.io/"
-  },
   java: {
-    icon: props => <Java {...props} />,
+    icon: props => <DevIcon {...props} icon="java" />,
     label: "Java",
     link: "https://www.java.com/download/"
   },
   javascript: {
-    icon: props => <Javascript {...props} />,
+    icon: props => <DevIcon {...props} icon="javascript" />,
     label: "Javascript",
     link: "https://www.javascript.com/"
   },
-  jeet: {
-    icon: props => <Jeet {...props} />,
-    label: "Jeet",
-    link: "http://jeet.gs/"
-  },
-  jetbrains: {
-    icon: props => <Jetbrains {...props} />,
-    label: "Jetbrains",
-    link: "https://www.jetbrains.com/"
-  },
   jquery: {
-    icon: props => <Jquery {...props} />,
+    icon: props => <DevIcon {...props} icon="jquery" />,
     label: "Jquery",
     link: "https://jquery.com/"
   },
   krakenjs: {
-    icon: props => <Krakenjs {...props} />,
+    icon: props => <DevIcon {...props} icon="krakenjs" />,
     label: "Krakenjs",
     link: "http://krakenjs.com/"
   },
   laravel: {
-    icon: props => <Laravel {...props} />,
+    icon: props => <DevIcon {...props} icon="laravel" />,
     label: "Laravel",
     link: "https://laravel.com/"
   },
   less: {
-    icon: props => <Less {...props} />,
+    icon: props => <DevIcon {...props} icon="less" />,
     label: "Less",
     link: "http://lesscss.org/"
   },
   linkedin: {
-    icon: props => <Linkedin {...props} />,
+    icon: props => <DevIcon {...props} icon="linkedin" />,
     label: "Linkedin",
     link: "https://www.linkedin.com/"
   },
   linux: {
-    icon: props => <Linux {...props} />,
+    icon: props => <DevIcon {...props} icon="linux" />,
     label: "Linux",
     link: "https://www.linux.org/"
   },
   meteor: {
-    icon: props => <Meteor {...props} />,
+    icon: props => <DevIcon {...props} icon="meteor" />,
     label: "Meteor",
     link: "https://www.meteor.com/"
   },
-  mocha: {
-    icon: props => <Mocha {...props} />,
-    label: "Mocha",
-    link: "https://mochajs.org/"
-  },
   mongodb: {
-    icon: props => <Mongodb {...props} />,
+    icon: props => <DevIcon {...props} icon="mongodb" />,
     label: "Mongodb",
     link: "https://www.mongodb.com/"
   },
-  moodle: {
-    icon: props => <Moodle {...props} />,
-    label: "Moodle",
-    link: "https://moodle.com/"
-  },
   mysql: {
-    icon: props => <Mysql {...props} />,
+    icon: props => <DevIcon {...props} icon="mysql" />,
     label: "Mysql",
     link: "https://www.mysql.com/"
   },
   nginx: {
-    icon: props => <Nginx {...props} />,
+    icon: props => <DevIcon {...props} icon="nginx" />,
     label: "Nginx",
     link: "https://www.nginx.com/"
   },
   nodejs: {
-    icon: props => <Nodejs {...props} />,
+    icon: props => <DevIcon {...props} icon="nodejs" />,
     label: "Nodejs",
     link: "https://nodejs.org/"
   },
-  nodewebkit: {
-    icon: props => <Nodewebkit {...props} />,
-    label: "Nodewebkit",
-    link: "https://nwjs.io/"
-  },
   npm: {
-    icon: props => <Npm {...props} />,
+    icon: props => <DevIcon {...props} icon="npm" />,
     label: "Npm",
     link: "https://www.npmjs.com/"
   },
-  oracle: {
-    icon: props => <Oracle {...props} />,
-    label: "Oracle",
-    link: "https://www.oracle.com/index.html"
-  },
   photoshop: {
-    icon: props => <Photoshop {...props} />,
+    icon: props => <DevIcon {...props} icon="photoshop" />,
     label: "Photoshop",
     link: "https://www.photoshop.com/"
   },
   php: {
-    icon: props => <Php {...props} />,
+    icon: props => <DevIcon {...props} icon="php" />,
     label: "Php",
     link: "https://www.php.net/"
   },
-  phpstorm: {
-    icon: props => <Phpstorm {...props} />,
-    label: "Phpstorm",
-    link: "https://www.jetbrains.com/phpstorm/"
-  },
   postgresql: {
-    icon: props => <Postgresql {...props} />,
+    icon: props => <DevIcon {...props} icon="postgresql" />,
     label: "Postgresql",
     link: "https://www.postgresql.org/"
   },
-  protractor: {
-    icon: props => <Protractor {...props} />,
-    label: "Protractor",
-    link: "https://www.protractortest.org/"
-  },
-  pycharm: {
-    icon: props => <Pycharm {...props} />,
-    label: "Pycharm",
-    link: "https://www.jetbrains.com/pycharm/"
-  },
   python: {
-    icon: props => <Python {...props} />,
+    icon: props => <DevIcon {...props} icon="python" />,
     label: "Python",
     link: "https://www.python.org/"
   },
-  rails: {
-    icon: props => <Rails {...props} />,
-    label: "Rails",
-    link: "https://rubyonrails.org/"
-  },
   react: {
-    icon: props => <ReactLang {...props} />,
+    icon: props => <DevIcon {...props} icon="react" />,
     label: "React",
     link: "https://reactjs.org/"
   },
   redhat: {
-    icon: props => <Redhat {...props} />,
+    icon: props => <DevIcon {...props} icon="redhat" />,
     label: "Redhat",
     link: "https://www.redhat.com/en"
   },
   redis: {
-    icon: props => <Redis {...props} />,
+    icon: props => <DevIcon {...props} icon="redis" />,
     label: "Redis",
     link: "https://redis.io/"
   },
   ruby: {
-    icon: props => <Ruby {...props} />,
+    icon: props => <DevIcon {...props} icon="ruby" />,
     label: "Ruby",
     link: "https://www.ruby-lang.org/en/"
   },
-  rubymine: {
-    icon: props => <Rubymine {...props} />,
-    label: "Rubymine",
-    link: "https://www.jetbrains.com/ruby/"
-  },
   safari: {
-    icon: props => <Safari {...props} />,
+    icon: props => <DevIcon {...props} icon="safari" />,
     label: "Safari",
     link: "https://www.apple.com/safari/"
   },
   sass: {
-    icon: props => <Sass {...props} />,
+    icon: props => <DevIcon {...props} icon="sass" />,
     label: "Sass",
     link: "https://sass-lang.com/"
   },
-  sequelize: {
-    icon: props => <Sequelize {...props} />,
-    label: "Sequelize",
-    link: "https://sequelize.org/"
-  },
-  sketch: {
-    icon: props => <Sketch {...props} />,
-    label: "Sketch",
-    link: "https://www.sketch.com/"
-  },
-  slack: {
-    icon: props => <Slack {...props} />,
-    label: "Slack",
-    link: "https://slack.com/"
-  },
-  sourcetree: {
-    icon: props => <Sourcetree {...props} />,
-    label: "Sourcetree",
-    link: "https://www.sourcetreeapp.com/"
-  },
-  ssh: {
-    icon: props => <Ssh {...props} />,
-    label: "Ssh",
-    link: "https://www.ssh.com/"
-  },
   stylus: {
-    icon: props => <Stylus {...props} />,
+    icon: props => <DevIcon {...props} icon="stylus" />,
     label: "Stylus",
     link: "http://stylus-lang.com/"
   },
   swift: {
-    icon: props => <Swift {...props} />,
+    icon: props => <DevIcon {...props} icon="swift" />,
     label: "Swift",
     link: "https://www.swift.com/"
   },
   symfony: {
-    icon: props => <Symfony {...props} />,
+    icon: props => <DevIcon {...props} icon="symfony" />,
     label: "Symfony",
     link: "https://symfony.com/"
   },
-  tomcat: {
-    icon: props => <Tomcat {...props} />,
-    label: "Tomcat",
-    link: "http://tomcat.apache.org/"
-  },
   travis: {
-    icon: props => <Travis {...props} />,
+    icon: props => <DevIcon {...props} icon="travis" />,
     label: "Travis",
     link: "https://travis-ci.org/"
   },
   trello: {
-    icon: props => <Trello {...props} />,
+    icon: props => <DevIcon {...props} icon="trello" />,
     label: "Trello",
     link: "https://trello.com/"
   },
-  twitter: {
-    icon: props => <Twitter {...props} />,
-    label: "Twitter",
-    link: "https://twitter.com/"
-  },
   typescript: {
-    icon: props => <Typescript {...props} />,
+    icon: props => <DevIcon {...props} icon="typescript" />,
     label: "Typescript",
     link: "https://www.typescriptlang.org/"
   },
   ubuntu: {
-    icon: props => <Ubuntu {...props} />,
+    icon: props => <DevIcon {...props} icon="ubuntu" />,
     label: "Ubuntu",
     link: "https://ubuntu.com/"
   },
-  vagrant: {
-    icon: props => <Vagrant {...props} />,
-    label: "Vagrant",
-    link: "https://www.vagrantup.com/"
-  },
   vim: {
-    icon: props => <Vim {...props} />,
+    icon: props => <DevIcon {...props} icon="vim" />,
     label: "Vim",
     link: "https://www.vim.org/"
   },
   visualstudio: {
-    icon: props => <Visualstudio {...props} />,
+    icon: props => <DevIcon {...props} icon="visualstudio" />,
     label: "Visualstudio",
     link: "https://visualstudio.microsoft.com/"
   },
   vuejs: {
-    icon: props => <Vuejs {...props} />,
+    icon: props => <DevIcon {...props} icon="vuejs" />,
     label: "Vuejs",
     link: "https://vuejs.org/"
   },
   webpack: {
-    icon: props => <Webpack {...props} />,
+    icon: props => <DevIcon {...props} icon="webpack" />,
     label: "Webpack",
     link: "https://webpack.js.org/"
   },
-  webstorm: {
-    icon: props => <Webstorm {...props} />,
-    label: "Webstorm",
-    link: "https://www.jetbrains.com/webstorm/"
-  },
   wordpress: {
-    icon: props => <Wordpress {...props} />,
+    icon: props => <DevIcon {...props} icon="wordpress" />,
     label: "Wordpress",
     link: "https://wordpress.com/"
   },
-  yarn: {
-    icon: props => <Yarn {...props} />,
-    label: "Yarn",
-    link: "https://yarnpkg.com/"
-  },
   yii: {
-    icon: props => <Yii {...props} />,
+    icon: props => <DevIcon {...props} icon="yii" />,
     label: "Yii",
     link: "https://www.yiiframework.com/"
   },
   zend: {
-    icon: props => <Zend {...props} />,
+    icon: props => <DevIcon {...props} icon="zend" />,
     label: "Zend",
     link: "https://www.zend.com/"
   }

@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "devicon-react-svg": "^0.2.2",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
-    "react-devicon": "^0.1.9",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
