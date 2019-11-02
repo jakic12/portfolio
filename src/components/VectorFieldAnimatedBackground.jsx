@@ -176,19 +176,23 @@ class VectorFieldAnimatedBackground extends Component {
   };
 
   handleResize = () => {
-    this.mount.style.width = `${window.innerWidth}px`;
-    this.mount.style.height = `${window.innerHeight}px`;
+    //this.mount.style.width = `${window.innerWidth}px`;
+    //this.mount.style.height = `${window.innerHeight}px`;
 
-    this.camera.aspect = window.innerWidth / window.innerHeight;
+    let { width, height } = window.getComputedStyle(this.mount);
+    width = width.replace("px", "");
+    height = height.replace("px", "");
+
+    this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
 
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(width, height);
   };
 
   render() {
     return (
       <div
-        style={{ width: window.innerWidth, height: window.innerHeight }}
+        style={{ width: `100%`, height: `100%` }}
         ref={mount => {
           this.mount = mount;
         }}

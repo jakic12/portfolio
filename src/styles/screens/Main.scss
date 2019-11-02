@@ -2,7 +2,7 @@
 
 .mainPage {
   .topTitle {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     position: relative;
     z-index: 3;
@@ -31,5 +31,10 @@
         }
       }
     }
+  }
+
+  .projectList {
+    background: $background-color;
+    height: 1000px;
   }
 }
