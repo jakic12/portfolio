@@ -48,9 +48,11 @@
     background: $background-color;
     height: 1000px;
     position: relative;
+    padding-top: 4rem;
 
     &::before {
       position: absolute;
+      top: 0;
       height: 4rem;
       width: 100%;
       content: "";

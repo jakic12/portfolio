@@ -3,6 +3,7 @@ import "../styles/screens/Main.scss";
 
 // components
 import VectorFieldAnimatedBackground from "../components/VectorFieldAnimatedBackground";
+import ProjectList from "../components/ProjectList";
 
 const Main = () => {
   return (
@@ -15,7 +16,9 @@ const Main = () => {
         </div>
         <VectorFieldAnimatedBackground />
       </div>
-      <div className="projectList"></div>
+      <div className="projectList">
+        <ProjectList />
+      </div>
     </div>
   );
 };
