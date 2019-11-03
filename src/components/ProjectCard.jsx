@@ -17,7 +17,7 @@ const ProjectCard = ({
 }) => {
   return (
     <div className="projectCardWrapper">
-      <div className="projectCard">
+      <a className="projectCard" href={link}>
         <div className="cardHeader">
           <div className="icon">
             <img src={icon} alt="project card icon" />
@@ -50,7 +50,7 @@ const ProjectCard = ({
             <Carousel images={bigPictures} />
           </div>
         </div>
-      </div>
+      </a>
     </div>
   );
 };

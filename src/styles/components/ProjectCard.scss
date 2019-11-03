@@ -63,11 +63,14 @@
     right: 0px;
     top: 0;
     position: relative;
+    display: block;
+    text-decoration: none;
+    color: white;
 
     &:hover {
       top: -5px;
       right: 10px;
-      cursor: pointer;
+      @include BoxShadow(16);
     }
 
     .cardHeader {
