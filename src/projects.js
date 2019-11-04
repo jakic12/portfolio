@@ -3,7 +3,7 @@ export default [
     title: "project is sda s",
     subtitle: "this is a cool project",
     online: true,
-    link: "https://google.com",
+    link: "https://github.com/teasdasdasd",
     icon:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2LuT3lH29fcJzscrZo0W1opexkXNW826XvB4E1RIwNRbt3ToeuQ&s",
     bigPictures: [

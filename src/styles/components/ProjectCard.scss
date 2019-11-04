@@ -1,5 +1,31 @@
 @import "../color_palette.scss";
 
+.lds-dual-ring {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  padding-left: 5px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @mixin BoxShadow($dp, $shadowColor: #000) {
   @if $dp==0 {
     box-shadow: none;
@@ -76,6 +102,7 @@
     .cardHeader {
       display: flex;
       flex-direction: row;
+      align-items: center;
       .icon {
         flex-shrink: 0;
         display: flex;
@@ -113,6 +140,30 @@
             height: 35px;
             white-space: nowrap;
           }
+        }
+      }
+      .onlineProject {
+        border-radius: 3px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        padding: 5px;
+        height: 20px;
+        margin-right: 20px;
+        background: $secondary-color;
+        color: $background-dark;
+        @include BoxShadow(8);
+
+        &.down {
+          background: red;
+        }
+        &.maybe {
+          background: yellow;
+        }
+        &.loading {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          line-height: 20px;
         }
       }
     }
