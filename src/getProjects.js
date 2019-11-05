@@ -1,13 +1,21 @@
 const fetch = require("node-fetch");
 const fs = require(`fs`);
 
+/**
+ * config file can have the following properties:
+ * @param {boolean} online_demo is there an online demo available, automatically set to false if there is no url
+ * @param {String} online_demo_url where the demo is located *if this is not supplied, the homepage from the repository is taken
+ * @param {String} icon_url url for the icon
+ * @param {String} screenshot_urls urls for the screenshots of the demo
+ * @param {Array<String>} technologies what technologies were used in this project, full list in `src/technologies.jsx`
+ */
 const p_configFileName = `p_project.config`;
 const personal_access_token = ``;
 
 const username = `jakic12`;
 const reposUrl = `https://api.github.com/users/${username}/repos`;
 
-const outputFile = `src/projects.json`;
+let outputFile = `src/projects.json`;
 
 const fetchGithubApi = url =>
   fetch(url, {
@@ -61,6 +69,25 @@ const getConfigFiles = (repos, filename) =>
     resolve(out.filter(r => r));
   });
 
+const convertRepositoriesToProjectData = repositories => {
+  return repositories.map(element => {
+    return {
+      title: element.name,
+      subtitle: element.description,
+      online:
+        element.p_configFile.online_demo &&
+        (element.p_configFile.online_demo_url || element.homepage),
+      link: element.p_configFile.online_demo_url
+        ? element.p_configFile.online_demo_url
+        : element.homepage,
+      iconUrl: element.p_configFile.icon_url,
+      bigPictures: element.p_configFile.screenshot_urls,
+      tech: element.p_configFile.technologies,
+      linkToRepo: element.html_url
+    };
+  });
+};
+
 console.log(`Fetching github api: getting repositories`);
 fetchGithubApi(reposUrl)
   .then(r => r.json())
@@ -76,8 +103,12 @@ fetchGithubApi(reposUrl)
       console.log(`Done`);
       console.log(`Found ${repositories.length} repos with config files`);
 
+      console.log(`Converting to projectData`);
+      const projectData = convertRepositoriesToProjectData(repositories);
+      console.log(`Done`);
+
       console.log(`Writing the repositories to ${outputFile}`);
-      fs.writeFile(outputFile, `${JSON.stringify(repositories)}`, e => {
+      fs.writeFile(outputFile, `${JSON.stringify(projectData)}`, e => {
         if (e) console.error(`Error at writing to file:`, e);
         else console.log(`Done`);
       });
