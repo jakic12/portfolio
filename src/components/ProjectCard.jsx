@@ -5,6 +5,11 @@ import "../styles/components/ProjectCard.scss";
 import Carousel from "./Carousel";
 import technologies from "../technologies";
 
+const corsBypassers = [
+  "https://cors-anywhere.herokuapp.com/",
+  "https://crossorigin.me/"
+];
+
 const ProjectCard = ({
   title,
   subtitle,
@@ -96,8 +101,9 @@ function urlExists(url) {
       })
       .catch(e => {
         // if it gets denied by cors
-        fetch(`https://cors-anywhere.herokuapp.com/${url}`)
+        fetchWithoutCors(url, corsBypassers)
           .then(res => {
+            console.log(`corsBypass:`, res);
             if (res.ok) {
               resolve(2);
             } else {
@@ -117,5 +123,26 @@ function urlExists(url) {
       });
   });
 }
+
+const fetchWithoutCors = (url, bypassers, start = 0) => {
+  return new Promise((resolve, reject) => {
+    if (bypassers.length <= start) reject();
+
+    fetch(bypassers[start] + url)
+      .then(res => {
+        resolve(res);
+      })
+      .catch(e => {
+        console.log(bypassers[start], `didn't work, trying the next one`);
+        fetchWithoutCors(url, bypassers, start + 1)
+          .then(res => {
+            resolve(res);
+          })
+          .catch(() => {
+            reject();
+          });
+      });
+  });
+};
 
 export default ProjectCard;
