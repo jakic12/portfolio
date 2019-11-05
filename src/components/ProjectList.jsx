@@ -5,9 +5,10 @@ import "../styles/components/ProjectList.scss";
 import ProjectCard from "./ProjectCard";
 
 // data
-import projects from "../projects";
+import projects from "../projects.json";
 
 const ProjectList = ({ items }) => {
+  console.log(projects);
   return (
     <div className="listProject">
       {projects.map((project, i) => (

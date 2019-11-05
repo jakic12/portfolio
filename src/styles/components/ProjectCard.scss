@@ -117,6 +117,19 @@
           @include BoxShadow(8);
           border-radius: 3px;
         }
+
+        .noIcon {
+          height: 170px;
+          width: 170px;
+          @include BoxShadow(8);
+          border-radius: 3px;
+          margin-left: -20px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
       .cardTitle {
@@ -128,14 +141,28 @@
         justify-content: space-between;
         min-width: 0;
 
-        .title {
-          margin: 0;
+        .titleWrapper {
+          margin: 10px 0;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .title {
+            display: block;
+            margin: 0;
+          }
+
+          .githubLink {
+            display: block;
+            padding-right: 10px;
+          }
         }
         .subtitle {
           margin: 0;
         }
         .techs {
           overflow: hidden;
+          margin-top: 10px;
           .techList {
             height: 35px;
             white-space: nowrap;
