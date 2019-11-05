@@ -70,22 +70,25 @@ const getConfigFiles = (repos, filename) =>
   });
 
 const convertRepositoriesToProjectData = repositories => {
-  return repositories.map(element => {
-    return {
-      title: element.name,
-      subtitle: element.description,
-      online:
-        element.p_configFile.online_demo &&
-        (element.p_configFile.online_demo_url || element.homepage),
-      link: element.p_configFile.online_demo_url
-        ? element.p_configFile.online_demo_url
-        : element.homepage,
-      iconUrl: element.p_configFile.icon_url,
-      bigPictures: element.p_configFile.screenshot_urls,
-      tech: element.p_configFile.technologies,
-      linkToRepo: element.html_url
-    };
-  });
+  return repositories
+    .map(element => {
+      return {
+        title: element.name,
+        subtitle: element.description,
+        online:
+          element.p_configFile.online_demo &&
+          (element.p_configFile.online_demo_url || element.homepage),
+        link: element.p_configFile.online_demo_url
+          ? element.p_configFile.online_demo_url
+          : element.homepage,
+        iconUrl: element.p_configFile.icon_url,
+        bigPictures: element.p_configFile.screenshot_urls,
+        tech: element.p_configFile.technologies,
+        linkToRepo: element.html_url,
+        createdAt: element.created_at
+      };
+    })
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 };
 
 console.log(`Fetching github api: getting repositories`);
