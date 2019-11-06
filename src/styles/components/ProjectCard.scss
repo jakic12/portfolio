@@ -75,12 +75,14 @@
 }
 
 .projectCardWrapper {
-  width: 700px;
+  width: 90%;
+  max-width: 700px;
   height: 220px;
   position: relative;
 
   .projectCard {
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     height: 220px;
     background: rgb(65, 65, 65);
     @include BoxShadow(8);
@@ -103,6 +105,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      height: 100%;
       .icon {
         flex-shrink: 0;
         display: flex;
@@ -132,65 +135,73 @@
         }
       }
 
-      .cardTitle {
+      .cardHeaderMain {
         flex-grow: 1;
         flex-shrink: 1;
-        padding: 30px;
+
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-width: 0;
-
-        .titleWrapper {
-          margin: 10px 0;
+        flex-direction: row;
+        align-items: center;
+        .cardTitle {
+          flex-grow: 1;
+          flex-shrink: 1;
+          padding: 30px;
           display: flex;
-          flex-direction: row;
-          align-items: center;
+          flex-direction: column;
+          justify-content: space-between;
+          min-width: 0;
 
-          .title {
-            display: block;
+          .titleWrapper {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .title {
+              display: block;
+              margin: 0;
+            }
+
+            .githubLink {
+              display: block;
+              padding-right: 10px;
+            }
+          }
+          .subtitle {
             margin: 0;
           }
-
-          .githubLink {
-            display: block;
-            padding-right: 10px;
+          .techs {
+            overflow: hidden;
+            margin-top: 10px;
+            .techList {
+              height: 35px;
+              white-space: nowrap;
+            }
           }
         }
-        .subtitle {
-          margin: 0;
-        }
-        .techs {
-          overflow: hidden;
-          margin-top: 10px;
-          .techList {
-            height: 35px;
-            white-space: nowrap;
-          }
-        }
-      }
-      .onlineProject {
-        border-radius: 3px;
-        flex-shrink: 0;
-        flex-grow: 0;
-        padding: 5px;
-        height: 20px;
-        margin-right: 20px;
-        background: $secondary-color;
-        color: $background-dark;
-        @include BoxShadow(8);
+        .onlineProject {
+          border-radius: 3px;
+          flex-shrink: 0;
+          flex-grow: 0;
+          padding: 5px;
+          height: 20px;
+          margin-right: 20px;
+          background: $secondary-color;
+          color: $background-dark;
+          @include BoxShadow(8);
 
-        &.down {
-          background: red;
-        }
-        &.maybe {
-          background: yellow;
-        }
-        &.loading {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          line-height: 20px;
+          &.down {
+            background: red;
+          }
+          &.maybe {
+            background: yellow;
+          }
+          &.loading {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            line-height: 20px;
+          }
         }
       }
     }
@@ -198,8 +209,42 @@
       .cardBodyInner {
       }
     }
+
+    @media screen and (max-width: 680px) {
+      .cardHeader {
+        flex-direction: column;
+        .icon {
+          height: auto;
+          img {
+            margin: -20px 0 0 0;
+          }
+
+          .noIcon {
+            margin: -20px 0 0 0;
+          }
+        }
+
+        .cardHeaderMain {
+          .onlineProject {
+            display: none;
+          }
+        }
+      }
+    }
   }
   &:not(:first-child) {
     margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .projectCardWrapper {
+    height: auto;
+    &:not(:first-child) {
+      margin-top: calc(2rem + 20px);
+    }
+    .projectCard {
+      height: auto;
+    }
   }
 }

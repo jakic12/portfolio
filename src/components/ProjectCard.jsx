@@ -47,49 +47,51 @@ const ProjectCard = ({
             {iconUrl && <img src={iconUrl} alt="project card icon" />}
             {!iconUrl && <NoIcon />}
           </div>
-          <div className="cardTitle">
-            <div className="titleWrapper">
-              <a href={linkToRepo} className={"githubLink"}>
-                <GoMarkGithub color={`black`} size={`2em`} />
-              </a>
-              <h1 className="title">{title}</h1>
-            </div>
-            <h5 className="subtitle">{subtitle}</h5>
-            <div className="techs">
-              <div className="techList">
-                {tech &&
-                  tech.map(tec => {
-                    if (technologies[tec]) {
-                      return (
-                        <a href={technologies[tec].link}>
-                          {technologies[tec].icon({
-                            width: `30px`,
-                            height: `30px`,
-                            fill: `#ff1a59`
-                          })}
-                        </a>
-                      );
-                    }
-                  })}
+          <div className="cardHeaderMain">
+            <div className="cardTitle">
+              <div className="titleWrapper">
+                <a href={linkToRepo} className={"githubLink"}>
+                  <GoMarkGithub color={`black`} size={`2em`} />
+                </a>
+                <h1 className="title">{title}</h1>
+              </div>
+              <h5 className="subtitle">{subtitle}</h5>
+              <div className="techs">
+                <div className="techList">
+                  {tech &&
+                    tech.map(tec => {
+                      if (technologies[tec]) {
+                        return (
+                          <a href={technologies[tec].link}>
+                            {technologies[tec].icon({
+                              width: `30px`,
+                              height: `30px`,
+                              fill: `#ff1a59`
+                            })}
+                          </a>
+                        );
+                      }
+                    })}
+                </div>
               </div>
             </div>
+            {online && (
+              <div
+                className={`onlineProject${loadingConfirmed ? ` loading` : ``}${
+                  !loadingConfirmed && onlineStatus == 0 ? ` down` : ``
+                }${!loadingConfirmed && onlineStatus == 1 ? ` maybe` : ``}`}
+              >
+                {loadingConfirmed && (
+                  <>
+                    Loading<div className="lds-dual-ring"></div>
+                  </>
+                )}
+                {!loadingConfirmed && onlineStatus == 2 && `Online`}
+                {!loadingConfirmed && onlineStatus == 0 && `Down`}
+                {!loadingConfirmed && onlineStatus == 1 && `Server exists`}
+              </div>
+            )}
           </div>
-          {online && (
-            <div
-              className={`onlineProject${loadingConfirmed ? ` loading` : ``}${
-                !loadingConfirmed && onlineStatus == 0 ? ` down` : ``
-              }${!loadingConfirmed && onlineStatus == 1 ? ` maybe` : ``}`}
-            >
-              {loadingConfirmed && (
-                <>
-                  Loading<div className="lds-dual-ring"></div>
-                </>
-              )}
-              {!loadingConfirmed && onlineStatus == 2 && `Online`}
-              {!loadingConfirmed && onlineStatus == 0 && `Down`}
-              {!loadingConfirmed && onlineStatus == 1 && `Server exists`}
-            </div>
-          )}
         </div>
         <div className="cardBody">
           <div className="cardBodyInner">
