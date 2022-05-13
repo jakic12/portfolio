@@ -4,10 +4,10 @@ export const interpolate = (x, arr1, arr2, result) => {
   }
 
   if (arr1.length != result.length) {
-    throw "interpolation error, result array doesn't match in length";
+    throw `interpolation error, result array (${result.length}) doesn't match in length (${arr1.length})`;
   }
 
   for (let i = 0; i < arr1.length; i++) {
-    result[i] = x * arr1 + (1 - x) * arr2;
+    result[i] = (1 - x) * arr1[i] + x * arr2[i];
   }
 };
