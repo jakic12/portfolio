@@ -1,44 +1,41 @@
 {
-  "name": "portfolio",
-  "homepage": "https://jakic12.github.io/",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "devicon-react-svg": "^0.2.2",
-    "gh-pages": "^2.1.1",
-    "node-fetch": "^2.6.0",
-    "node-sass": "^4.13.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-icons": "^3.8.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "react-spring": "^8.0.27",
-    "react-three": "^0.9.7",
-    "svg-inline-loader": "^0.8.0",
-    "three": "^0.109.0"
-  },
+  "name": "jakic12.github.io",
+  "version": "1.0.0",
+  "description": "Simple page to show what projects i have made",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --config webpack.config.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakic12/jakic12.github.io.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakic12/jakic12.github.io/issues"
+  },
+  "homepage": "https://github.com/jakic12/jakic12.github.io#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.5",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.0.14",
+    "express": "^4.18.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.5",
+    "three": "^0.140.2"
   }
 }

@@ -1,28 +1,23 @@
 import React from "react";
-import "../styles/screens/Main.scss";
+import ThreeBackground from "../components/ThreeBackground";
+import styled from "styled-components";
 
-// components
-import VectorFieldAnimatedBackground from "../components/VectorFieldAnimatedBackground";
-import ProjectList from "../components/ProjectList";
+const ThreeBackgroundContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: black;
+`;
 
-const Main = () => {
+export default () => <ThreeBackground />;
+/*
+export default () => {
   return (
-    <div className="mainPage">
-      <div className="topTitle">
-        <div className="middleCard">
-          <div className="title">
-            <h1>Jakob Drusany</h1>
-          </div>
-        </div>
-        <VectorFieldAnimatedBackground />
-      </div>
-      <div className="projectList">
-        <div className="projectListInner">
-          <ProjectList />
-        </div>
-      </div>
+    <div>
+      <ThreeBackgroundContainer>
+        <ThreeBackground />
+      </ThreeBackgroundContainer>
+      <h1>This is my React app!</h1>
     </div>
   );
 };
-
-export default Main;
+*/
