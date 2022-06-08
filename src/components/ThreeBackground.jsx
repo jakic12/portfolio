@@ -6,6 +6,8 @@ import { interpolate } from "../utils/array-interpolation";
 
 extend({ OrbitControls });
 
+// TODO: add statistics page?
+
 const torus = (points, radius1 = 1, radius2 = 3) => {
   let positions = [],
     colors = [];
@@ -73,6 +75,170 @@ const weirdSphere = (points) => {
   return [new Float32Array(positions), new Float32Array(colors)];
 };
 
+const line = (points, x1, y1, z1, x2, y2, z2, resultArr, randomness = 0.5) => {
+  for (let i = 0; i < points; i++) {
+    resultArr.push(x1 + (x2 - x1) * (i / points) + randomness * Math.random());
+    resultArr.push(y1 + (y2 - y1) * (i / points) + randomness * Math.random());
+    resultArr.push(z1 + (z2 - z1) * (i / points) + randomness * Math.random());
+  }
+  return resultArr;
+};
+
+const square = ({
+  points,
+  centerZ = 0,
+  centerX = 0,
+  centerY = 0,
+  sizeX = 10,
+  sizeY = 10,
+  resultArr,
+}) => {
+  line(
+    points / 4,
+    centerX - sizeX / 2,
+    centerY - sizeY / 2,
+    centerZ,
+    centerX + sizeX / 2,
+    centerY - sizeY / 2,
+    centerZ,
+    resultArr
+  );
+  line(
+    points / 4,
+    centerX + sizeX / 2,
+    centerY - sizeY / 2,
+    centerZ,
+    centerX + sizeX / 2,
+    centerY + sizeY / 2,
+    centerZ,
+    resultArr
+  );
+  line(
+    points / 4,
+    centerX + sizeX / 2,
+    centerY + sizeY / 2,
+    centerZ,
+    centerX - sizeX / 2,
+    centerY + sizeY / 2,
+    centerZ,
+    resultArr
+  );
+  line(
+    points / 4,
+    centerX - sizeX / 2,
+    centerY + sizeY / 2,
+    centerZ,
+    centerX - sizeX / 2,
+    centerY - sizeY / 2,
+    centerZ,
+    resultArr
+  );
+};
+
+const Cube = ({ points, sizeX = 5, sizeY = 5, sizeZ = 5, resultArr }) => {
+  const num_of_lines = 12 + 12;
+  square({
+    points: (points / num_of_lines) * 4,
+    centerZ: -sizeZ / 2,
+    sizeX: sizeX,
+    sizeY: sizeY,
+    resultArr: resultArr,
+  });
+
+  square({
+    points: (points / num_of_lines) * 4,
+    centerZ: sizeZ / 2,
+    sizeX: sizeX,
+    sizeY: sizeY,
+    resultArr: resultArr,
+  });
+
+  line(
+    (points / num_of_lines) * 4,
+    -sizeX / 2,
+    -sizeY / 2,
+    -sizeZ / 2,
+    -sizeX / 2,
+    -sizeY / 2,
+    sizeZ / 2,
+    resultArr
+  );
+
+  line(
+    (points / num_of_lines) * 4,
+    sizeX / 2,
+    -sizeY / 2,
+    -sizeZ / 2,
+    sizeX / 2,
+    -sizeY / 2,
+    sizeZ / 2,
+    resultArr
+  );
+  line(
+    (points / num_of_lines) * 4,
+    -sizeX / 2,
+    sizeY / 2,
+    -sizeZ / 2,
+    -sizeX / 2,
+    sizeY / 2,
+    sizeZ / 2,
+    resultArr
+  );
+  line(
+    (points / num_of_lines) * 4,
+    sizeX / 2,
+    sizeY / 2,
+    -sizeZ / 2,
+    sizeX / 2,
+    sizeY / 2,
+    sizeZ / 2,
+    resultArr
+  );
+};
+
+const hyperCube = (points, sizeX = 5, sizeY = 5, sizeZ = 5) => {
+  const positions = [];
+  const colors = [];
+
+  const num_of_lines = 12 + 12 + 8;
+  const inner_cube_size_ratio = 1 / 3;
+
+  const inner_sizeX = sizeX * inner_cube_size_ratio;
+  const inner_sizeY = sizeY * inner_cube_size_ratio;
+  const inner_sizeZ = sizeZ * inner_cube_size_ratio;
+
+  Cube({
+    points: (points / num_of_lines) * 12,
+    sizeX: inner_sizeX,
+    sizeY: inner_sizeY,
+    sizeZ: inner_sizeZ,
+    resultArr: positions,
+  });
+
+  Cube({
+    points: (points / num_of_lines) * 12,
+    sizeX: sizeX,
+    sizeY: sizeY,
+    sizeZ: sizeZ,
+    resultArr: positions,
+  });
+
+  const remaining_points = points - positions.length / 3;
+  console.log(
+    `need:${points}, have: ${positions.length} missing ${remaining_points} points, adding...`
+  );
+
+  for (let i = 0; i < remaining_points; i++) {
+    positions.push(0);
+    positions.push(0);
+    positions.push(0);
+  }
+
+  console.log(`cube with ${positions.length / 3} points`);
+
+  return [new Float32Array(positions)];
+};
+
 const plane = (points, sizeX = 10, sizeY = 10, sizeZ = 1) => {
   const positions = [];
   const colors = [];
@@ -100,6 +266,7 @@ function Particles({ points = 80 * 80 }) {
       weirdSphere(points),
       torus(points, 2, 1),
       plane(points),
+      hyperCube(points),
     ];
   }, [points]);
 
@@ -194,11 +361,11 @@ function Particles({ points = 80 * 80 }) {
 export default () => (
   <Canvas
     orthographic
-    camera={{ zoom: 60 }}
+    camera={{ zoom: 90 }}
     raycaster={{ params: { Points: { threshold: 0.2 } } }}
   >
     <Particles />
-    <Controls />
+    {/*<Controls />*/}
   </Canvas>
 );
 
