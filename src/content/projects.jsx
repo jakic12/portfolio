@@ -1,11 +1,11 @@
-import CNNjsfrontend from "./screenshots/CNN-js-frontend.png";
-import bezier from "./screenshots/bezier.png";
-import maze from "./screenshots/maze-madness.png";
-import timetable from "./screenshots/timetable.png";
-import bigxo from "./screenshots/big-xo.png";
-import brainfuck from "./screenshots/brainfuck-debugger.png";
-import calculator from "./screenshots/calculate-anything.png";
-import form from "./screenshots/simple-form.png";
+import CNNjsfrontend from "./screenshots/CNN-js-frontend.webp";
+import bezier from "./screenshots/bezier.webp";
+import maze from "./screenshots/maze-madness.webp";
+import timetable from "./screenshots/timetable.webp";
+import bigxo from "./screenshots/big-xo.webp";
+import brainfuck from "./screenshots/brainfuck-debugger.webp";
+import calculator from "./screenshots/calculate-anything.webp";
+import form from "./screenshots/simple-form.webp";
 
 import techs from "../components/technologies";
 const { react, javascript, html5, css3, nodejs } = techs;

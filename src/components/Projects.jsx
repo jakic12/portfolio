@@ -64,7 +64,13 @@ export default () => {
     <>
       {projects.map((proj, i) => (
         <Project key={`${i}_proj`}>
-          {i % 2 == 0 && <Image src={proj.images[0]} href={proj.link} />}
+          {i % 2 == 0 && (
+            <Image
+              src={proj.images[0]}
+              href={proj.link}
+              alt={`${proj.name} screenshot`}
+            />
+          )}
           <DescriptionWrapper>
             <Title>{proj.name}</Title>
             {<Description>{proj.description}</Description>}
@@ -76,7 +82,13 @@ export default () => {
               ))}
             </Tools>
           </DescriptionWrapper>
-          {i % 2 == 1 && <Image src={proj.images[0]} href={proj.link} />}
+          {i % 2 == 1 && (
+            <Image
+              src={proj.images[0]}
+              href={proj.link}
+              alt={`${proj.name} screenshot`}
+            />
+          )}
         </Project>
       ))}
     </>
