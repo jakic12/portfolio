@@ -5,8 +5,7 @@ import styled from "styled-components";
 import Projects from "../components/Projects";
 
 const ThreeBackgroundContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  height: 80vh;
   background: black;
 
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
@@ -15,20 +14,14 @@ const ThreeBackgroundContainer = styled.div`
 `;
 
 const Name = styled.div`
-  position: absolute;
-  left: 50vw;
-  top: 50vh;
-  transform: translate(-50%, -50%);
-  font-size: 5em;
-  text-align: center;
-  width: 100%;
   font-family: Black Ops One, cursive;
   font-weight: 200 !important;
+  width: auto;
   color: white;
-  text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px #eeeeee, 2px 1px 1px #cccccc,
-    1px 2px 1px #eeeeee, 3px 2px 1px #cccccc, 2px 3px 1px #eeeeee,
-    4px 3px 1px #cccccc, 3px 4px 1px #eeeeee, 5px 4px 1px #cccccc,
-    4px 5px 1px #eeeeee, 6px 5px 1px #cccccc, 5px 6px 1px #eeeeee,
+  text-shadow: 1px 0px 1px #cccccc, 0px 1px 1px $000, 2px 1px 1px #cccccc,
+    1px 2px 1px $000, 3px 2px 1px #cccccc, 2px 3px 1px $000,
+    4px 3px 1px #cccccc, 3px 4px 1px $000, 5px 4px 1px #cccccc,
+    4px 5px 1px $000, 6px 5px 1px #cccccc, 5px 6px 1px $000,
     7px 6px 1px #cccccc;
 `;
 
@@ -36,12 +29,17 @@ const Name = styled.div`
 
 export default () => {
   return (
-    <div>
-      <ThreeBackgroundContainer>
+    <>
+      <div className="relative h-[50vh] mt-16 bg-black ring-zinc-700 ring-1">
         <ThreeBackground />
-        <Name>Jakob Drusany</Name>
-      </ThreeBackgroundContainer>
+        <div className="absolute flex flex-col justify-center items-center top-0 h-full w-full">
+          <div className="flex flex-col w-max max-w-full p-5">
+            <Name className="text-6xl sm:text-7xl text-left">Jakob Drusany</Name>
+            <div className="text-3xl text-white">Developer</div>
+          </div>
+        </div>
+      </div>
       <Projects />
-    </div>
+    </>
   );
 };
